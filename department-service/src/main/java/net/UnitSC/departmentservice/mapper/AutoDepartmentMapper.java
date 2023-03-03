@@ -13,5 +13,4 @@ public interface AutoDepartmentMapper {
     DepartmentDto mapToDepartmentDto(Department department);
 
     Department mapToDepartment(DepartmentDto departmentDto);
-
 }

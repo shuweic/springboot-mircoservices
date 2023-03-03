@@ -5,7 +5,7 @@ import net.UnitSC.empolyeeservice.entity.Employee;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface AutoEmployeeMapper {
 
     AutoEmployeeMapper MAPPER = Mappers.getMapper(AutoEmployeeMapper.class);
