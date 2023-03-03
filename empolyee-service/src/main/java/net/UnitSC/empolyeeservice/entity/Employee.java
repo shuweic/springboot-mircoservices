@@ -1,4 +1,4 @@
-package net.UnitSC.departmentservice.entity;
+package net.UnitSC.empolyeeservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,13 +11,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "departments")
-public class Department {
+@Table(name = "employees")
+public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String departmentName;
-    private String departmentDescription;
+    private String firstName;
+    private String lastName;
     @Column(nullable = false, unique = true)
-    private String departmentCode;
+    private String email;
 }
