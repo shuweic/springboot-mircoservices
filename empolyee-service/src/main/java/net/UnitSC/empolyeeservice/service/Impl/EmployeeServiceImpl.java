@@ -7,6 +7,7 @@ import net.UnitSC.empolyeeservice.dto.EmployeeDto;
 import net.UnitSC.empolyeeservice.entity.Employee;
 import net.UnitSC.empolyeeservice.mapper.AutoEmployeeMapper;
 import net.UnitSC.empolyeeservice.repository.EmployeeRepository;
+import net.UnitSC.empolyeeservice.service.APIClient;
 import net.UnitSC.empolyeeservice.service.EmployeeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeRepository employeeRepository;
 
-    private WebClient webClient;
+//    private WebClient webClient;
 //    private RestTemplate restTemplate;
+    private APIClient apiClient;
     @Override
     public EmployeeDto saveEmployee(EmployeeDto employeeDto) {
 
@@ -45,11 +47,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 //        DepartmentDto departmentDto = responseEntity.getBody();
 
 //        EmployeeDto employeeDto = AutoEmployeeMapper.MAPPER.mapToEmployeeDto(employee);
-        DepartmentDto departmentDto = webClient.get()
-                .uri("http://localhost:8080/api/departments/" + employee.getDepartmentCode())
-                .retrieve()
-                .bodyToMono(DepartmentDto.class)
-                .block();
+//        DepartmentDto departmentDto = webClient.get()
+//                .uri("http://localhost:8080/api/departments/" + employee.getDepartmentCode())
+//                .retrieve()
+//                .bodyToMono(DepartmentDto.class)
+//                .block();
+
+
+        DepartmentDto departmentDto = apiClient.getDepartment(employee.getDepartmentCode());
         EmployeeDto employeeDto = new EmployeeDto(
                 employee.getId(),
                 employee.getFirstName(),
