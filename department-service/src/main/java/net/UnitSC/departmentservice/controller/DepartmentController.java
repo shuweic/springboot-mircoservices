@@ -27,4 +27,9 @@ public class DepartmentController {
         DepartmentDto departmentDto = departmentService.getDepartmentByCode(departmentCode);
         return new ResponseEntity<>(departmentDto, HttpStatus.OK);
     }
+
+    @PostMapping("/test")
+    public ResponseEntity<String> test() {
+        return new ResponseEntity<>("test", HttpStatus.OK);
+    }
 }
